@@ -1,0 +1,971 @@
+:root {
+  --primary: #000000;
+  --bg: #003366;
+  --navbar-bg: #003366;
+  --navbar-border: #003366;
+  --highlight: #ffc857;
+  --text-color: #fff;
+  --shadow-color: rgba(1, 1, 3, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  border: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  color: var(--text-color);
+  /* min-height: 3000px;  */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--navbar-border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  transition: background-color 0.3s ease; /* Smooth transition on scroll */
+}
+
+/* Logo Styling */
+.navbar .navbar-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: transparent; /* Menjadikan warna teks transparan */
+  letter-spacing: 2px;
+  background: linear-gradient(
+    45deg,
+    #ffc857,
+    #ff9f00,
+    #f1f1f1,
+    #ff6600
+  ); /* Warna gradient */
+  background-size: 400% 400%; /* Ukuran awal gradient */
+  -webkit-background-clip: text; /* Menampilkan background hanya di teks */
+  background-clip: text;
+  animation: gradient-animation 2s ease infinite; /* Animasi untuk gradient bergerak */
+}
+
+/* Animasi untuk membuat gradient bergerak */
+@keyframes gradient-animation {
+  0% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Navbar Links Styling */
+.navbar .navbar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.navbar .navbar-nav a {
+  color: var(--highlight);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar .navbar-nav a:hover {
+  color: var(--text-color);
+}
+
+.navbar .navbar-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--highlight);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.navbar .navbar-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Navbar Extra / Hamburger Styling */
+.navbar .navbar-extra {
+  display: none;
+  align-items: center;
+}
+
+.navbar .hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--highlight);
+}
+
+.navbar .navbar-extra a {
+  color: var(--highlight);
+  font-size: 2rem;
+  padding: 0.5rem;
+  display: block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .navbar-extra a:hover {
+  color: var(--text-color);
+  transform: scale(1.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* hero section */
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("img/header-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Overlay effect */
+.hero::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, var(--bg) 6%, rgba(255, 255, 255, 0) 25%);
+  z-index: -1;
+}
+
+/* Content Styling */
+.hero .content {
+  padding: 1.4rem 7%;
+  max-width: 60rem;
+  text-align: center; /* Center-align the text */
+}
+
+/* Hero Title Styling */
+.hero .content h1 {
+  font-size: 3rem;
+  color: var(--text-color);
+  text-shadow: 1px 1px 3px var(--shadow-color);
+  line-height: 1.2;
+  font-weight: bold;
+}
+
+.hero .content h1 span {
+  color: var(--highlight);
+  font-weight: bold;
+}
+
+/* Button Styling */
+.hero .content .cta {
+  margin-top: 2rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--highlight);
+  background-color: var(--bg);
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase; /* Make text uppercase for better style */
+  letter-spacing: 1px; /* Slight letter spacing for the button */
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover Effects on Button */
+.hero .content .cta:hover {
+  background-color: var(--highlight);
+  color: var(--bg);
+  transform: translateY(-5px); /* Move the button up when hovered */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Create a deeper shadow when hovered */
+}
+
+.hero .content .cta:active {
+  transform: translateY(-2px); /* Button pushes down when clicked */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero .content p {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  line-height: 1.4;
+  font-weight: 400;
+  text-shadow: 1px 1px 3px var(--shadow-color);
+  max-width: 35rem;
+  margin: auto;
+}
+
+/* About section */
+/* Section Tentang Kami */
+.about {
+  background-color: #f9f9f9; /* Latar belakang lembut */
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  color: #003366; /* Warna utama yang menonjol */
+  margin-bottom: 2rem;
+}
+
+.about h2 span {
+  color: #ffc857; /* Warna highlight untuk kata "Tentang" */
+}
+
+.content h3 span {
+  color: var(--highlight);
+}
+
+.about .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap; /* Responsif untuk layar kecil */
+  margin-top: 2rem;
+}
+
+.about-img {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animasi transisi */
+}
+
+.about-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover; /* Menjaga rasio gambar */
+}
+
+.about-img:hover {
+  transform: scale(1.05); /* Membesarkan gambar saat hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Bayangan lebih kuat saat hover */
+}
+
+.content {
+  max-width: 700px;
+  width: 100%;
+  text-align: justify;
+}
+
+.content h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 1.5rem;
+}
+
+.content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.content span {
+  font-weight: 600;
+  color: #003366; /* Menyorot teks penting */
+}
+
+/* jenis section */
+
+.jenis {
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--navbar-border);
+  padding: 2rem 0;
+}
+
+.jenis h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--bg);
+  position: relative;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+.jenis .jewnis {
+  color: var(--text-color);
+}
+
+.jenis h2 span {
+  color: var(--highlight);
+}
+
+.jenis p {
+  text-align: center;
+  max-width: 30rem;
+  margin: auto;
+  margin-top: -20px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.jenis .row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.jenis-card {
+  text-align: center;
+  position: relative;
+  width: 200px;
+  height: 250px;
+  padding-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.jenis-card img {
+  margin-top: -13px;
+  border: 2px solid var(--highlight);
+  border-radius: 50%;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jenis-card img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.jenis-card-title {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(
+    --highlight
+  ); /* Pastikan teks berwarna lebih gelap agar terlihat jelas */
+  margin-top: 0.5rem;
+}
+
+.jenis-card-price {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.jenis .row .jenis-card:hover {
+  transform: translateY(-10px); /* Efek saat hover pada card */
+}
+
+/*alur pemesanan */
+.alur {
+  background-color: #f9f9f9; /* Warna latar belakang */
+  padding: 2rem 1rem; /* Ruang di sekitar konten */
+  text-align: center; /* Tengah secara horizontal */
+}
+
+.alur h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--bg);
+  position: relative;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.alur .alurr {
+  color: var(--highlight);
+}
+
+.alur h2 span {
+  color: var(--bg);
+}
+
+.alur .row {
+  display: flex;
+  justify-content: center; /* Gambar berada di tengah */
+  align-items: center; /* Gambar sejajar secara vertikal */
+  flex-wrap: wrap; /* Responsif: Gambar akan turun jika layar kecil */
+  gap: 1.5rem; /* Jarak antar elemen jika ada lebih dari satu */
+}
+
+.alur .alur-img {
+  max-width: 100%; /* Gambar menyesuaikan dengan layar */
+  border-radius: 1rem; /* Sudut gambar membulat */
+  overflow: hidden; /* Mencegah konten keluar dari kotak */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan bayangan lembut */
+}
+
+.alur .alur-img img {
+  width: 100%; /* Gambar menyesuaikan dengan kontainer */
+  height: auto; /* Menjaga rasio aspek gambar */
+  object-fit: cover; /* Gambar dipotong agar tetap proporsional */
+  border-radius: 1rem; /* Sudut gambar membulat sesuai kontainer */
+}
+
+/*Tracking */
+/* Tracking Barang Section */
+.tracking {
+  padding: 30px;
+  background-color: var(--bg);
+  text-align: center;
+}
+
+.tracking h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  position: relative;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+.tracking .trackingg {
+  color: var(--text-color);
+}
+
+.tracking h2 span {
+  color: var(--highlight);
+}
+
+.tracking h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.tracking p {
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.tracking-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tracking-form .form-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: var(--bg);
+}
+
+.tracking-form h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.tracking-form label {
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.tracking-form input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.tracking-form button {
+  background-color: var(--bg); /* Golden Yellow */
+  color: var(--highlight); /* Dark Blue */
+  padding: 12px 20px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.tracking-form button:hover {
+  background-color: var(--highlight); /* Dark Blue */
+  color: var(--bg); /* White */
+  transform: translateY(-5px); /* Menggerakkan tombol ke atas */
+}
+
+.tracking-info {
+  margin-top: 30px;
+  font-size: 1.2rem;
+}
+
+.tracking-info #tracking-status {
+  font-weight: bold;
+  color: var(--highlight);
+}
+
+/* Testimonial Section */
+.testimoni {
+  background-color: var(--text-color);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.testimoni h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.testimoni-highlight {
+  color: var(--bg); /*"Testimoni" */
+  font-weight: bold;
+}
+
+.pelanggan-highlight {
+  color: var(--highlight); /*"Pelanggan" */
+  font-weight: bold;
+}
+
+.testimoni-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.testimoni-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimoni-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.testimoni-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 2px solid var(--highlight-color);
+}
+
+.testimoni-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.testimoni-review {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Kontak Section */
+/* Section Kontak */
+.contact {
+  padding: 10px 20px;
+  background-color: var(--bg); /* Dark Blue */
+  color: white;
+  text-align: center;
+}
+
+.kami {
+  color: #ffc857;
+}
+
+/* Heading */
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #f1f1f1;
+}
+
+/* Kontainer untuk Map dan Formulir */
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border: 3px solid #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden; /* Pastikan peta tidak keluar dari container */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Google Maps */
+.contact-map {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 350px;
+  border-radius: 10px;
+}
+
+.contact-map .map-container iframe {
+  border: none;
+  transition: transform 0.4s ease; /* Animasi zoom */
+}
+
+.contact-map .map-container:hover iframe {
+  transform: scale(1.05); /* Zoom in peta */
+}
+
+.contact-map .map-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Tambahkan bayangan saat hover */
+}
+
+/* Formulir Kontak */
+.contact-form {
+  flex: 1;
+  padding: 20px;
+  border-left: 3px;
+}
+
+.contact-form h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+/* Form Input Fields */
+/* Styling untuk input dan textarea */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Supaya padding tidak mempengaruhi lebar input */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Menambahkan transisi */
+}
+
+/* Efek saat input atau textarea di-click (focus) */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  transform: translateY(-5px);
+  border-color: #ffc857;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form button {
+  background-color: var(--bg);
+  color: var(--highlight);
+  padding: 12px 20px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-form button:hover {
+  background-color: var(--highlight);
+  color: var(--bg);
+  transform: translateY(-5px);
+}
+
+/* Footer Section */
+.footer {
+  background-color: var(--bg); /* Dark Blue */
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.footer .footer-content p {
+  text-align: justify;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-brand,
+.footer-about,
+.footer-categories {
+  width: 30%;
+}
+
+.footer-brand {
+  text-align: left; /* Align CleanKick text to left */
+}
+
+.footer-about,
+.footer-categories {
+  text-align: center; /* Align About Us and Our Services text to center */
+  padding: 10px;
+}
+
+/* CleanKick Section */
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color); /* Warna teks utama */
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.3s ease; /* Efek transisi warna */
+}
+
+.footer-logo span {
+  color: var(--highlight); /* Warna elemen yang di-highlight */
+  font-weight: 700;
+  transition: color 0.3s ease; /* Efek transisi warna */
+}
+
+.footer-logo:hover span {
+  color: #ffc857; /* Warna highlight ketika hover */
+}
+
+.footer-logo:hover {
+  color: var(--highlight); /* Opsional: Mengubah warna link utama saat hover */
+}
+
+.footer-brand p {
+  font-size: 1.1rem;
+  color: #f1f1f1;
+  line-height: 1.6;
+}
+
+/* About Us Section */
+.footer-about h3,
+.footer-categories h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #ffc857; /* Golden Yellow */
+}
+
+.footer-about ul,
+.footer-categories ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-about ul li,
+.footer-categories ul li {
+  margin-bottom: 10px;
+}
+
+.footer-about a,
+.footer-categories a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-about a:hover,
+.footer-categories a:hover {
+  color: #ffc857; /* Golden Yellow */
+}
+
+/* Our Services (Categories) Layout */
+.footer-categories ul {
+  display: block; /* Membuat kategori tampil dalam satu kolom */
+  margin-top: 15px;
+}
+
+.footer-categories ul li {
+  margin-bottom: 10px; /* Menambahkan jarak antar item */
+}
+
+.footer-about ul {
+  display: block; /* Membuat link About Us tampil vertikal */
+}
+
+.footer-about ul li {
+  margin-bottom: 8px; /* Menambahkan jarak antara link */
+}
+
+/* Media Sosial */
+.footer-social {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-social .social-icon {
+  font-size: 1.5rem;
+  color: #f1f1f1;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social .social-icon:hover {
+  color: #ffc857; /* Golden Yellow */
+  transform: scale(1.2);
+}
+
+/* Footer Credit */
+.footer-credit {
+  font-size: 0.9rem;
+  color: #f1f1f1;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  /* Menyembunyikan navbar pada tampilan mobile */
+  .navbar .navbar-nav {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    background-color: var(--bg);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 999;
+  }
+
+  /* Menampilkan ikon hamburger pada mobile */
+  .navbar .hamburger {
+    display: block;
+  }
+
+  /* Navbar hanya muncul saat class 'active' ditambahkan */
+  .navbar .navbar-nav.active {
+    display: flex;
+  }
+}
+
+/* Responsive Styles */
+
+/* Untuk layar lebih kecil dari 768px (Tablet dan ponsel) */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Atur konten menjadi kolom */
+    align-items: center; /* Pusatkan elemen */
+  }
+
+  .footer-brand,
+  .footer-about,
+  .footer-categories {
+    width: 90%; /* Perbesar elemen agar cocok di layar kecil */
+    margin-bottom: 20px; /* Tambahkan jarak antar bagian */
+    text-align: center; /* Pusatkan teks untuk bagian ini */
+  }
+
+  .footer-brand p {
+    text-align: center; /* Justifikasi ulang teks ke tengah */
+    font-size: 1rem;
+  }
+
+  .footer-about ul,
+  .footer-categories ul {
+    text-align: center; /* Pusatkan daftar */
+    padding: 0;
+  }
+
+  .footer-social {
+    flex-direction: row; /* Susun ikon media sosial secara horizontal */
+    gap: 15px; /* Kurangi jarak antar ikon */
+  }
+}
+
+/* Untuk layar lebih kecil dari 480px (iPhone dan ponsel kecil) */
+@media (max-width: 480px) {
+  .footer-content {
+    padding: 10px; /* Kurangi padding untuk layar kecil */
+  }
+
+  .footer-brand p {
+    font-size: 0.9rem; /* Kurangi ukuran font */
+    line-height: 1.5; /* Perbaiki jarak antar baris */
+  }
+
+  .footer-logo {
+    font-size: 1.5rem; /* Sesuaikan ukuran logo */
+  }
+
+  .footer-about h3,
+  .footer-categories h3 {
+    font-size: 1.4rem; /* Kurangi ukuran heading */
+  }
+
+  .footer-about a,
+  .footer-categories a {
+    font-size: 1rem; /* Sesuaikan ukuran font tautan */
+  }
+
+  .footer-social .social-icon {
+    font-size: 1.2rem; /* Sesuaikan ukuran ikon media sosial */
+  }
+
+  .footer-credit {
+    font-size: 0.8rem; /* Kurangi ukuran teks kredit */
+  }
+}
